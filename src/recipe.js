@@ -46,6 +46,36 @@ const createRecipe = () => {
     return id;
 };
 /**
+ * it creat new ingredient
+ * @param {*id of recipe} id
+ * @param {*name of ingredient} name
+ */
+const createIngredients = (recipeId, name) => {
+    const recipe = recipes.find((recipe) => (recipe.id = recipeId));
+    if (name.trim()) {
+        recipe.ingredients.push({
+            id: uuidv4(),
+            available: false,
+            title: name,
+        });
+        storeRecipe();
+    }
+};
+/**
+ * remove the chosen ingredient
+ * @param {it receive its id} ingredientId
+ */
+const removeIngredients = (ingredientId) => {
+    const ingredientIndex = recipes.ingredients.findIndex(
+        (recipe) => recipe.id === ingredientId
+    );
+
+    if (ingredientIndex > -1) {
+        recipes.ingredients.splice(ingredientIndex, 1);
+        storeRecipe();
+    }
+};
+/**
  * find a recipe and remove it by its id
  */
 const removeRecipe = (id) => {
@@ -87,6 +117,8 @@ recipes = loadRecipe();
  * export function for use
  */
 export {
+    createIngredients,
+    removeIngredients,
     updateRecipe,
     loadRecipe,
     storeRecipe,
