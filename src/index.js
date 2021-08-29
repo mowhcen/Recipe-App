@@ -1,18 +1,16 @@
-const todo = {
-    id: "aansassfsdfs",
-    text: "Pay the bills",
-    completed: false,
-    name: "mohsen",
-};
+import { createRecipe } from "./recipe";
+import { setFilter } from "./filter";
 
-const {
-    text: todoText,
-    completed,
-    details: otherDetails = "No details provided",
-    ...others
-} = todo;
+document.querySelector("#search-text").addEventListener("change", (e) => {
+    setFilter({
+        textSearch: e.target.value,
+    });
+    /**
+     * rendering note don`t forget
+     */
+});
 
-console.log(todoText);
-console.log(completed);
-console.log(otherDetails);
-console.log(others);
+document.querySelector("#add-recipe").addEventListener("click", () => {
+    const id = createRecipe();
+    location.assign(`/edit.html#${id}`);
+});
