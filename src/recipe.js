@@ -70,8 +70,8 @@ const updateRecipe = (id, updates) => {
         recipe.title = updates.title;
     }
 
-    if (typeof updates.body === "string") {
-        recipe.body = updates.body;
+    if (typeof updates.instruction === "string") {
+        recipe.instruction = updates.instruction;
     }
 
     storeRecipe();

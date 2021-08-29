@@ -4,7 +4,7 @@ import { removeRecipe, updateRecipe } from "./recipe";
  * create edit page element
  */
 const titleEl = document.querySelector("#recipe-title");
-const bodyEl = document.querySelector("#recipe-ins");
+const instructionEl = document.querySelector("#recipe-ins");
 const removeEl = document.querySelector("#remove");
 const recipeId = location.hash.substring(1);
 
@@ -14,9 +14,9 @@ titleEl.addEventListener("change", (e) => {
     });
 });
 
-bodyEl.addEventListener("change", (e) => {
+instructionEl.addEventListener("change", (e) => {
     updateRecipe(recipeId, {
-        body: e.target.value,
+        instruction: e.target.value,
     });
 });
 
