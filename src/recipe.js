@@ -41,6 +41,8 @@ const createRecipe = () => {
         ingredients: [],
     });
 
+    storeRecipe();
+
     return id;
 };
 /**
@@ -55,6 +57,28 @@ const removeRecipe = (id) => {
     }
 };
 /**
+ *
+ */
+const updateRecipe = (id, updates) => {
+    const recipe = recipes.find((recipe) => recipe.id === id);
+
+    if (!recipe) {
+        return;
+    }
+
+    if (typeof updates.title === "string") {
+        recipe.title = updates.title;
+    }
+
+    if (typeof updates.body === "string") {
+        recipe.body = updates.body;
+    }
+
+    storeRecipe();
+
+    return recipe;
+};
+/**
  * load recipe to its variables
  */
 recipes = loadRecipe();
@@ -62,4 +86,11 @@ recipes = loadRecipe();
 /**
  * export function for use
  */
-export { loadRecipe, storeRecipe, getRecipe, createRecipe, removeRecipe };
+export {
+    updateRecipe,
+    loadRecipe,
+    storeRecipe,
+    getRecipe,
+    createRecipe,
+    removeRecipe,
+};
