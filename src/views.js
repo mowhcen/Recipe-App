@@ -148,11 +148,11 @@ const showIngredientStatus = (recipeId) => {
     const len = recipe.ingredients.length;
     console.log(available);
     if (available === 0) {
-        return "none";
+        return "none of";
     } else if (available === len) {
         return "all";
     } else if (available > 0 && available < len) {
-        return "some";
+        return "some of";
     }
 };
 /**
