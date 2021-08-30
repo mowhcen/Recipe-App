@@ -109,6 +109,20 @@ const updateRecipe = (id, updates) => {
     return recipe;
 };
 /**
+ * making recipe sorted by filter value
+ */
+const sortRecipes = (filter) => {
+    const sortedRecipe = [];
+    recipes.forEach((recipe) => {
+        if (
+            recipe.title.toLowerCase().includes(filter.textSearch.toLowerCase())
+        ) {
+            sortedRecipe.push(recipe);
+        }
+    });
+    return sortedRecipe;
+};
+/**
  * load recipe to its variables
  */
 recipes = loadRecipe();
@@ -125,4 +139,5 @@ export {
     getRecipe,
     createRecipe,
     removeRecipe,
+    sortRecipes,
 };

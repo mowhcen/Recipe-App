@@ -1,13 +1,14 @@
 import { createRecipe } from "./recipe";
+import { printCardRecipe } from "./views";
 import { setFilter } from "./filter";
 
-document.querySelector("#search-text").addEventListener("change", (e) => {
+printCardRecipe();
+
+document.querySelector("#search-text").addEventListener("input", (e) => {
     setFilter({
         textSearch: e.target.value,
     });
-    /**
-     * rendering note don`t forget
-     */
+    printCardRecipe();
 });
 
 document.querySelector("#add-recipe").addEventListener("click", () => {
