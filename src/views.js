@@ -1,4 +1,9 @@
-import { getRecipe, sortRecipes } from "./recipe";
+import {
+    getRecipe,
+    removeIngredients,
+    sortRecipes,
+    toggleAvailable,
+} from "./recipe";
 
 import { getFilter } from "./filter";
 
@@ -22,7 +27,7 @@ const creatRecipeList = (recipeId) => {
         titleEl.textContent = "Unnamed Recipe";
     }
 
-    cardEl.href = `/edit.html#${recipeId}`;
+    cardEl.href = `/edit.html#${recipe.id}`;
     describeEl.textContent = `You have ${undefined} the ingredients`;
 
     /**
@@ -67,23 +72,46 @@ const showEditPage = (recipeId) => {
     titleEl.value = recipe.title;
     instructionEl.value = recipe.instruction;
 };
-
-const createIngredientsList = (ingredient) => {
-    const ingCardEl = document.createElement("a");
-    const ingCheckboxEl = document.createElement("checkbox");
-    const ingTitleEl = document.createElement("h3");
+/**
+ * create ingredient for append to its place
+ * @param {*get this array} ingredient
+ * @returns and return card for show
+ */
+const createIngredientsList = (ingredient, id) => {
+    const containEl = document.createElement("div");
+    const ingCardEl = document.createElement("label");
+    const ingCheckboxEl = document.createElement("input");
+    const ingTitleEl = document.createElement("span");
     const ingButtonEl = document.createElement("button");
 
+    ingCheckboxEl.type = "checkbox";
+
+    ingCheckboxEl.checked = ingredient.available;
     ingTitleEl.textContent = ingredient.title;
+
     ingButtonEl.textContent = "Remove";
 
     ingCardEl.appendChild(ingCheckboxEl);
     ingCardEl.appendChild(ingTitleEl);
     ingCardEl.appendChild(ingButtonEl);
+    containEl.appendChild(ingCardEl);
 
-    return ingCardEl;
+    ingButtonEl.addEventListener("click", () => {
+        removeIngredients(ingredient.id, id);
+        printIngredients(id);
+    });
+
+    ingCheckboxEl.addEventListener("click", (e) => {
+        toggleAvailable(ingredient.id, id, e.target.checked);
+        printIngredients(id);
+    });
+
+    return containEl;
 };
-
+/**
+ * print all the item to DOM
+ * @param {*receive} recipeId
+ */
 const printIngredients = (recipeId) => {
     const containerEl = document.querySelector("#ing-list");
     const recipe = getRecipe().find((recipe) => recipe.id === recipeId);
@@ -93,8 +121,8 @@ const printIngredients = (recipeId) => {
 
     if (ingredients.length > 0) {
         ingredients.forEach((ingredient) => {
-            const ingCardEl = createIngredientsList(ingredient);
-            containerEl.appendChild(ingCardEl);
+            const cardEl = createIngredientsList(ingredient, recipeId);
+            containerEl.appendChild(cardEl);
         });
     } else {
         const statusEl = document.createElement("p");

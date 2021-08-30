@@ -9,7 +9,7 @@ let recipes = [];
  * Read data from local storage if is there any
  */
 const loadRecipe = () => {
-    const recipeJSON = localStorage.getItem("recipe");
+    const recipeJSON = localStorage.getItem("recipes");
 
     try {
         return recipeJSON ? JSON.parse(recipeJSON) : [];
@@ -22,7 +22,7 @@ const loadRecipe = () => {
  * store recipe to localStorage
  */
 const storeRecipe = () => {
-    localStorage.setItem("recipe", JSON.stringify(recipes));
+    localStorage.setItem("recipes", JSON.stringify(recipes));
 };
 /**
  * return recipe
@@ -51,29 +51,47 @@ const createRecipe = () => {
  * @param {*name of ingredient} name
  */
 const createIngredients = (recipeId, name) => {
-    const recipe = recipes.find((recipe) => (recipe.id = recipeId));
-    if (name.trim()) {
+    const recipeIndex = recipes.findIndex((recipe) => recipe.id === recipeId);
+    const recipe = recipes.find((recipe) => recipe.id === recipeId);
+    if (name.trim() && recipeIndex >= 0) {
         recipe.ingredients.push({
             id: uuidv4(),
             available: false,
             title: name,
         });
+        recipes.splice(recipeIndex, 1, recipe);
         storeRecipe();
     }
+};
+
+const toggleAvailable = (ingredientId, recipeId, checked) => {
+    const recipeIndex = recipes.findIndex((recipe) => recipe.id === recipeId);
+    let recipe = recipes.find((recipe) => recipe.id === recipeId);
+    const ingIndex = recipe.ingredients.findIndex(
+        (ing) => ing.id === ingredientId
+    );
+    let ing = recipe.ingredients.find((ing) => ing.id === ingredientId);
+
+    ing.available = checked;
+
+    recipe.ingredients.splice(ingIndex, 1, ing);
+    recipes.splice(recipeIndex, 1, recipe);
+    storeRecipe();
 };
 /**
  * remove the chosen ingredient
  * @param {it receive its id} ingredientId
  */
-const removeIngredients = (ingredientId) => {
-    const ingredientIndex = recipes.ingredients.findIndex(
-        (recipe) => recipe.id === ingredientId
+const removeIngredients = (ingredientId, recipeId) => {
+    const recipeIndex = recipes.findIndex((recipe) => recipe.id === recipeId);
+    let recipe = recipes.find((recipe) => recipe.id === recipeId);
+    const ingIndex = recipe.ingredients.findIndex(
+        (ing) => ing.id === ingredientId
     );
 
-    if (ingredientIndex > -1) {
-        recipes.ingredients.splice(ingredientIndex, 1);
-        storeRecipe();
-    }
+    recipe.ingredients.splice(ingIndex, 1);
+    recipes.splice(recipeIndex, 1, recipe);
+    storeRecipe();
 };
 /**
  * find a recipe and remove it by its id
@@ -140,4 +158,5 @@ export {
     createRecipe,
     removeRecipe,
     sortRecipes,
+    toggleAvailable,
 };
