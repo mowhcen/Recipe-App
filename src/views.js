@@ -1,6 +1,7 @@
 /**
  * import necessary files
  */
+
 import {
     getRecipe,
     removeIngredients,
@@ -31,7 +32,9 @@ const creatRecipeList = (recipeId) => {
     }
 
     cardEl.href = `/edit.html#${recipe.id}`;
-    describeEl.textContent = `You have ${undefined} the ingredients`;
+    describeEl.textContent = `You have ${showIngredientStatus(
+        recipe.id
+    )} the ingredients`;
 
     /**
      * add element to right position
@@ -62,7 +65,6 @@ const printCardRecipe = () => {
         containerEl.appendChild(statusEl);
     }
 };
-const
 /**
  * by getting recipe id it show what its current title and body
  * @param {*get id for edited recipe} recipeId
@@ -135,6 +137,27 @@ const printIngredients = (recipeId) => {
     }
 };
 
+const showIngredientStatus = (recipeId) => {
+    const recipe = getRecipe().find((recipe) => recipe.id === recipeId);
+    let available = 0;
+    recipe.ingredients.forEach((ing) => {
+        if (ing.available === true) {
+            available += 1;
+        }
+    });
+    const len = recipe.ingredients.length;
+    console.log(available);
+    if (available === 0) {
+        return "none";
+    } else if (available === len) {
+        return "all";
+    } else if (available > 0 && available < len) {
+        return "some";
+    }
+};
+/**
+ * export function for use
+ */
 export {
     creatRecipeList,
     printCardRecipe,
