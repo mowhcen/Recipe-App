@@ -1,5 +1,5 @@
 /**
- * filter input value of searchbar
+ * store filter value of searchbar
  */
 const filter = {
     textSearch: "",
@@ -10,17 +10,15 @@ const filter = {
  * @returns filter object
  */
 const getFilter = () => filter;
-
 /**
- * change filter object value
- * @param {*} param0
+ * store user search text
+ * @param {*get} updates
  */
 const setFilter = ({ textSearch: update }) => {
     if (typeof update === "string") {
         filter.textSearch = update;
     }
 };
-
 /**
  * export function for use
  */

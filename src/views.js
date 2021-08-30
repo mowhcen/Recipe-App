@@ -1,3 +1,6 @@
+/**
+ * import necessary files
+ */
 import {
     getRecipe,
     removeIngredients,
@@ -59,6 +62,7 @@ const printCardRecipe = () => {
         containerEl.appendChild(statusEl);
     }
 };
+const
 /**
  * by getting recipe id it show what its current title and body
  * @param {*get id for edited recipe} recipeId
