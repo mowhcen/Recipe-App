@@ -1,7 +1,7 @@
 import uuidv4 from "uuid/v4";
 
 /**
- * make value for saving recipe in local storage
+ * create array for save information
  */
 let recipes = [];
 
@@ -17,7 +17,6 @@ const loadRecipe = () => {
         return [];
     }
 };
-
 /**
  * store recipe to localStorage
  */
@@ -25,7 +24,8 @@ const storeRecipe = () => {
     localStorage.setItem("recipes", JSON.stringify(recipes));
 };
 /**
- * return recipe
+ * for use array on other files
+ * @returns recipe
  */
 const getRecipe = () => recipes;
 /**
@@ -47,7 +47,7 @@ const createRecipe = () => {
 };
 /**
  * it creat new ingredient
- * @param {*id of recipe} id
+ * @param {*get } recipeId
  * @param {*name of ingredient} name
  */
 const createIngredients = (recipeId, name) => {
@@ -63,7 +63,12 @@ const createIngredients = (recipeId, name) => {
         storeRecipe();
     }
 };
-
+/**
+ * find it in array and then change it value
+ * @param {* get } ingredientId
+ * @param {* get } recipeId
+ * @param {* get value of} checked
+ */
 const toggleAvailable = (ingredientId, recipeId, checked) => {
     const recipeIndex = recipes.findIndex((recipe) => recipe.id === recipeId);
     let recipe = recipes.find((recipe) => recipe.id === recipeId);
@@ -79,8 +84,9 @@ const toggleAvailable = (ingredientId, recipeId, checked) => {
     storeRecipe();
 };
 /**
- * remove the chosen ingredient
- * @param {it receive its id} ingredientId
+ * find it array and remove it
+ * @param {*get} ingredientId
+ * @param {*get} recipeId
  */
 const removeIngredients = (ingredientId, recipeId) => {
     const recipeIndex = recipes.findIndex((recipe) => recipe.id === recipeId);
@@ -94,7 +100,8 @@ const removeIngredients = (ingredientId, recipeId) => {
     storeRecipe();
 };
 /**
- * find a recipe and remove it by its id
+ * remove chosen recipe
+ * @param {*get recipe} id
  */
 const removeRecipe = (id) => {
     const recipeIndex = recipes.findIndex((recipe) => recipe.id === id);
@@ -105,7 +112,10 @@ const removeRecipe = (id) => {
     }
 };
 /**
- *
+ * update a note instruction and title
+ * @param {*get recipe} id
+ * @param {*get new information} updates
+ * @returns new information as object
  */
 const updateRecipe = (id, updates) => {
     const recipe = recipes.find((recipe) => recipe.id === id);
@@ -127,7 +137,9 @@ const updateRecipe = (id, updates) => {
     return recipe;
 };
 /**
- * making recipe sorted by filter value
+ * it sort array by filter text
+ * @param {*get} filter : ;
+ * @returns sorted list
  */
 const sortRecipes = (filter) => {
     const sortedRecipe = [];
@@ -141,7 +153,7 @@ const sortRecipes = (filter) => {
     return sortedRecipe;
 };
 /**
- * load recipe to its variables
+ * load recipe to its variable
  */
 recipes = loadRecipe();
 
