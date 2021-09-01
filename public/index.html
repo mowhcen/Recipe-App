@@ -4,14 +4,19 @@
 <head>
     <title>Recipe App</title>
     <link rel="stylesheet" href="styles/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <h1>Recipe App</h1>
-    <input type="text" id="search-text" placeholder="Search">
-    <div id="recipe-list">
+    <div class="container__page">
+        <h1 class="heading__home">Recipe App</h1>
+        <input type="text" class="input__search" id="search-text" placeholder="Search">
+        <div class="container__list" id="recipe-list">
+        </div>
+        <button class="btn__add--recipe" id="add-recipe">Add Recipe</button>
     </div>
-    <button id="add-recipe">Add Recipe</button>
     <script src="scripts/index-bundle.js"></script>
 </body>
 
