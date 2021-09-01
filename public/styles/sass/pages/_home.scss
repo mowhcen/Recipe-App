@@ -99,14 +99,6 @@
     }
 }
 
-.contain {
-    background-color: $color-list;
-    margin-bottom: 1.5rem;
-    padding: 0.5rem 5rem;
-    border-radius: 1rem;
-    box-shadow: rgba($color-font-heading, 0.5) 0px 3px 8px;
-}
-
 .link {
     text-decoration: none;
 
@@ -120,35 +112,5 @@
     &__describe {
         color: $color-secondary;
         font-size: 1.5rem;
-    }
-}
-
-.btn {
-    cursor: pointer;
-    font-family: inherit;
-    background-color: $color-secondary;
-    color: $color-font-heading;
-    font-size: 2rem;
-    padding: 0.2rem 0.8rem;
-    border-radius: 2rem;
-    border: 1px solid $color-font-heading;
-    box-shadow: rgba($color-font-heading, 0.5) 0px 3px 8px;
-
-    &:hover {
-        box-shadow: rgba($color-font-heading, 0.8) 0px 3px 8px;
-    }
-
-    &:active {
-        box-shadow: rgba($color-font-heading, 0.4) 0px 3px 8px;
-    }
-
-    &--other {
-        margin-top: 3rem;
-        margin-bottom: 5rem;
-    }
-
-    &--remove {
-        font-size: 1.3rem;
-        margin-left: 2rem;
     }
 }

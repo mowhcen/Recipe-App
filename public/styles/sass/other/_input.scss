@@ -1,0 +1,30 @@
+.input {
+    font-family: inherit;
+    border: 1px solid $color-font-heading;
+    background-color: $color-secondary;
+    margin-top: 3rem;
+    border-radius: 2rem;
+    outline: none;
+    &:focus {
+        box-shadow: rgba($color-font-heading, 0.5) 0px 3px 8px;
+    }
+
+    &--title {
+        font-size: 3.5rem;
+        padding: 0.5rem 3.5rem;
+    }
+
+    &--textarea {
+        font-size: 1.6rem;
+        padding: 1rem 2rem;
+        margin-bottom: 2rem;
+        width: 40rem;
+        height: 15rem;
+        resize: none;
+    }
+
+    &--add {
+        font-size: 2rem;
+        padding: 0.3rem 2rem;
+    }
+}
