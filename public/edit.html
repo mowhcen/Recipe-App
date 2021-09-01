@@ -10,16 +10,18 @@
 </head>
 
 <body>
-    <input type="text" id="recipe-title" placeholder="Title">
-    <textarea id="recipe-ins" placeholder="Enter the instruction"></textarea>
-    <h2>Ingredients</h2>
-    <div id="ing-list"></div>
-    <form id="add-ing">
-        <input placeholder="Item name" name="title">
-        <button>Add</button>
-    </form>
-    <h2>Danger zone</h2>
-    <button id="remove">Delete recipe</button>
+    <div class="container container__page">
+        <input class="input input--title" type="text" id="recipe-title" placeholder="Title">
+        <textarea class="input input--textarea" id="recipe-ins" placeholder="Enter the instruction"></textarea>
+        <h2 class="heading heading__edit">Ingredients</h2>
+        <div class="container__list" id="ing-list"></div>
+        <form id="add-ing">
+            <input class="input input--add" placeholder="Item name" name="title">
+            <button class="btn ">Add</button>
+        </form>
+        <h2 class="heading heading__edit">Danger zone</h2>
+        <button class="btn btn--other" id="remove">Delete recipe</button>
+    </div>
     <script src="scripts/edit-bundle.js"></script>
 </body>
 

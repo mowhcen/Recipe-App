@@ -68,7 +68,8 @@ const printCardRecipe = () => {
         });
     } else {
         const statusEl = document.createElement("p");
-        statusEl.textContent = "There is no Recipe to show";
+        statusEl.textContent = "There is no Recipe to show !!";
+        statusEl.classList.add("status-message--big");
         containerEl.appendChild(statusEl);
     }
 };
@@ -94,7 +95,8 @@ const createIngredientsList = (ingredient, id) => {
     const containEl = document.createElement("div");
     const ingCardEl = document.createElement("label");
     const ingCheckboxEl = document.createElement("input");
-    const ingTitleEl = document.createElement("span");
+    const ingTitleEl = document.createElement("h6");
+    const hiddenSpan = document.createElement("span");
     const ingButtonEl = document.createElement("button");
 
     ingCheckboxEl.type = "checkbox";
@@ -105,9 +107,18 @@ const createIngredientsList = (ingredient, id) => {
     ingButtonEl.textContent = "Remove";
 
     ingCardEl.appendChild(ingCheckboxEl);
+    ingCardEl.appendChild(hiddenSpan);
     ingCardEl.appendChild(ingTitleEl);
     ingCardEl.appendChild(ingButtonEl);
     containEl.appendChild(ingCardEl);
+
+    containEl.classList.add("contain-edit");
+    hiddenSpan.classList.add("hidden-span");
+    ingButtonEl.classList.add("btn");
+    ingButtonEl.classList.add("btn--remove");
+    ingTitleEl.classList.add("list-title");
+    ingCardEl.classList.add("order-line");
+    ingCheckboxEl.classList.add("checkbox");
 
     ingButtonEl.addEventListener("click", () => {
         removeIngredients(ingredient.id, id);
@@ -139,7 +150,8 @@ const printIngredients = (recipeId) => {
         });
     } else {
         const statusEl = document.createElement("p");
-        statusEl.textContent = "There is no ingredient to show";
+        statusEl.textContent = "There is no ingredient to show !!";
+        statusEl.classList.add("status-message--small");
         containerEl.appendChild(statusEl);
     }
 };
