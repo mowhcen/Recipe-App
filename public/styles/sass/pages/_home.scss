@@ -122,3 +122,18 @@
         font-size: 1.5rem;
     }
 }
+
+.btn {
+    &__add-recipe {
+        margin-top: 3rem;
+        font-family: inherit;
+        background-color: $color-secondary;
+        color: $color-font-heading;
+        font-size: 2rem;
+        margin-bottom: 5rem;
+        padding: 0.2rem 0.8rem;
+        border-radius: 2rem;
+        border: 1px solid $color-font-heading;
+        box-shadow: rgba($color-font-heading, 0.5) 0px 3px 8px;
+    }
+}
