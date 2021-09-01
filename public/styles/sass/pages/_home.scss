@@ -1,0 +1,100 @@
+.search-bar {
+    position: relative;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    width: 100%;
+    max-width: 300px;
+}
+.search-text {
+    width: 100%;
+    display: flex;
+    padding: 1.5rem;
+    background-color: $color-secondary;
+    border: 2px solid $color-font-heading;
+    color: $color-font-heading;
+    font-family: inherit;
+    font-size: 1.2rem;
+    box-shadow: 3px 1px 0px 2px, 0px -1px 0px 2px $color-font-heading;
+    height: 4rem;
+    transform: skew(-3deg, 1deg);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    &:focus,
+    &:valid {
+        background-color: $color-secondary;
+        outline: none;
+        color: $color-font-heading;
+        ~ .letters-holder .letter {
+            @for $i from 1 through 6 {
+                &:nth-child(#{$i}) {
+                    &::before {
+                        filter: blur(20px);
+                        transform: translate(0, -35px) rotate(-210deg);
+                    }
+                    &::after {
+                        filter: blur(0);
+                        transform: scale(1) rotate(0);
+                    }
+                }
+            }
+            @for $i from 1 through 6 {
+                &:nth-child(#{$i}) {
+                    &::after {
+                        transition-delay: 150ms + ($i * 150ms);
+                    }
+                }
+            }
+        }
+    }
+}
+.letters-holder {
+    position: absolute;
+    top: 3rem;
+    left: -4px;
+    margin: 0;
+    list-style: none;
+    padding-left: 22px;
+    position: absolute;
+    display: flex;
+    pointer-events: none;
+    transition: 100ms;
+    .letter {
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: transparent;
+        pointer-events: none;
+        transition: 250ms ease-in-out;
+
+        &::after,
+        &::before {
+            color: $color-font-heading;
+            position: absolute;
+            transition: 250ms ease-in-out;
+        }
+        &::before {
+            top: -2rem;
+        }
+        &::after {
+            top: -5rem;
+            transform: scale(0) rotate(210deg);
+            filter: blur(20px);
+        }
+        $chars: s, e, a, r, c, h;
+        @each $char in $chars {
+            $i: index($chars, $char);
+            $x: index($chars, $char);
+            $i: $i * 200;
+            $y: $x * 12;
+            &[#{$char}]::before {
+                content: attr($char) quote($char);
+                transition-delay: $i + ms;
+            }
+            &[#{$char}]::after {
+                content: attr($char) quote($char);
+                left: unquote($y + "px");
+                color: $color-font-heading;
+            }
+        }
+    }
+}
