@@ -1,0 +1,87 @@
+.input {
+    font-family: inherit;
+    border: 1px solid $color-font-heading;
+    background-color: $color-secondary;
+    margin-top: 3rem;
+    border-radius: 2rem;
+    outline: none;
+    &:focus {
+        box-shadow: rgba($color-font-heading, 0.5) 0px 3px 8px;
+    }
+
+    &--title {
+        font-size: 3.5rem;
+        padding: 0.5rem 3.5rem;
+    }
+
+    &--textarea {
+        font-size: 1.6rem;
+        padding: 1rem 2rem;
+        margin-bottom: 2rem;
+        width: 40rem;
+        height: 15rem;
+        resize: none;
+    }
+
+    &--add {
+        font-size: 2rem;
+        padding: 0.3rem 2rem;
+    }
+}
+
+.list-title {
+    font-size: 2rem;
+    color: $color-font-heading;
+    flex: 1 0 60%;
+}
+
+.order-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.checkbox {
+    cursor: pointer;
+    opacity: 0;
+    flex: 1 0 10%;
+}
+
+.checkbox:checked ~ .hidden-span::after {
+    opacity: 1;
+    visibility: visible;
+}
+.hidden-span {
+    position: absolute;
+    left: 1rem;
+    height: 1.7rem;
+    width: 1.7rem;
+    background: $color-white;
+    box-shadow: 0 0 0 0.2rem $color-primary inset;
+    border-radius: 50%;
+
+    &::after {
+        position: absolute;
+        content: "";
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 0.8rem;
+        width: 0.8rem;
+        border-radius: 50%;
+        background: $color-primary;
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.contain-edit {
+    background-color: $color-list;
+    margin-bottom: 1.5rem;
+    width: 30rem;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    box-shadow: rgba($color-font-heading, 0.5) 0px 3px 8px;
+}
