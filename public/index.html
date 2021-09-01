@@ -10,9 +10,19 @@
 </head>
 
 <body>
-    <div class="container__page">
+    <div class="container container__home">
         <h1 class="heading__home">Recipe App</h1>
-        <input type="text" class="input__search" id="search-text" placeholder="Search">
+        <div class="search-bar">
+            <input type="text" class="search-text" id="search-text" required>
+            <ul class="letters-holder">
+                <li class="letter" s>s</li>
+                <li class="letter" e>e</li>
+                <li class="letter" a>a</li>
+                <li class="letter" r>r</li>
+                <li class="letter" c>c</li>
+                <li class="letter" h>h</li>
+            </ul>
+        </div>
         <div class="container__list" id="recipe-list">
         </div>
         <button class="btn__add--recipe" id="add-recipe">Add Recipe</button>

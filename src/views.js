@@ -17,6 +17,7 @@ import { getFilter } from "./filter";
  * @returns return element of each recipe
  */
 const creatRecipeList = (recipeId) => {
+    const containEl = document.createElement("div");
     const cardEl = document.createElement("a");
     const titleEl = document.createElement("h2");
     const describeEl = document.createElement("p");
@@ -42,8 +43,14 @@ const creatRecipeList = (recipeId) => {
 
     cardEl.appendChild(titleEl);
     cardEl.appendChild(describeEl);
+    containEl.appendChild(cardEl);
 
-    return cardEl;
+    containEl.classList.add("contain");
+    cardEl.classList.add("link");
+    titleEl.classList.add("link__title");
+    describeEl.classList.add("link__describe");
+
+    return containEl;
 };
 /**
  * it print or reprint element by filter text

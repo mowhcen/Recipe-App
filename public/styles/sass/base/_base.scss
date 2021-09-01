@@ -27,6 +27,12 @@ body {
         border-radius: 2rem;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     }
+
+    &__list {
+        display: flex;
+        margin-top: 5rem;
+        flex-direction: column;
+    }
 }
 
 ::selection {
