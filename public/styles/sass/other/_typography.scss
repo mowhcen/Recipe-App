@@ -1,0 +1,28 @@
+body {
+    font-family: "Dancing Script", cursive;
+}
+
+.heading {
+    color: $color-font-heading;
+    &__home {
+        font-size: 5.5rem;
+        font-weight: 700;
+        padding: 2rem;
+    }
+
+    &__edit {
+        font-size: 3.5rem;
+    }
+}
+
+.status-message--big {
+    color: $color-font-heading;
+
+    font-size: 3rem;
+}
+.status-message--small {
+    margin-top: 2rem;
+    color: $color-font-heading;
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
